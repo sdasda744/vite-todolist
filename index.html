@@ -19,12 +19,12 @@
                     <input
                         id="taskInput"
                         type="text"
-                        class="w-full block focus:outline-none border bg-gray-200 border-stone-900 px-4 py-2"
+                        class="w-full block focus:outline-none text-base border-t border-b border-l border-black bg-gray-200 px-4 py-2"
                         placeholder="Do something..."
                     />
                     <button
                         id="addTaskButton"
-                        class="bg-stone-900 px-2 py-2 border border-stone-900 text-white"
+                        class="bg-stone-900 px-3 py-2 border border-black text-white"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@
                                         class="task-text text-white text-lg"
                                     ></span>
                                 </div>
-                                <div class="display-icons hidden ">
+                                <div class="display-icons hidden">
                                     <div
                                         class="flex items-center gap-2 text-white"
                                     >
@@ -123,16 +123,45 @@
             class="max-w-sm mx-auto flex gap-6 items-center justify-center mt-4"
         >
             <button
-                id="delAllTasksButton"
-                class="px-2 py-1 bg-red-500 text-white shadow-lg"
+                id="selAllTasksButton"
+                class="px-4 py-2 rounded-lg hover:scale-105 duration-200 bg-sky-500 text-white shadow-lg flex items-center gap-2"
             >
-                Delete All
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="3"
+                    stroke="currentColor"
+                    class="size-5"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m4.5 12.75 6 6 9-13.5"
+                    />
+                </svg>
+
+                <span class="text-gray-100 font-medium">Done All</span>
             </button>
             <button
-                id="selAllTasksButton"
-                class="px-2 py-1 bg-sky-500 text-white shadow-lg"
+                id="delAllTasksButton"
+                class="px-2 py-2 rounded-lg hover:scale-105 duration-200 bg-red-500 text-white shadow-lg flex items-center gap-2"
             >
-                Select All
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="3"
+                    stroke="currentColor"
+                    class="size-5"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 9.75 14.25 12m0 0 2.25 2.25M14.25 12l2.25-2.25M14.25 12 12 14.25m-2.58 4.92-6.374-6.375a1.125 1.125 0 0 1 0-1.59L9.42 4.83c.21-.211.497-.33.795-.33H19.5a2.25 2.25 0 0 1 2.25 2.25v10.5a2.25 2.25 0 0 1-2.25 2.25h-9.284c-.298 0-.585-.119-.795-.33Z"
+                    />
+                </svg>
+                <span class="text-gray-100 font-medium">Remove All</span>
             </button>
         </div>
         <script type="module" src="/src/main.js"></script>
