@@ -21,7 +21,8 @@
     "nanoid": "^3.3.8",
     "picocolors": "^1.1.1",
     "rollup": "^4.28.1",
-    "source-map-js": "^1.2.1"
+    "source-map-js": "^1.2.1",
+    "sweetalert2": "^11.15.2"
   },
   "keywords": [],
   "author": "",

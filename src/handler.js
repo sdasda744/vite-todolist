@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import {
     addNewTask,
     handleCheckboxClick,
@@ -16,24 +17,34 @@ export const addTaskInputHandler = (event) => {
 // Delete all tasks
 export const delAllTasksHandler = () => {
     const taskLists = document.querySelectorAll(".task-list");
-    if (confirm("Are you sure you want to delete all?")) {
-        taskLists.forEach((taskList, index) => {
-            // Add animation class with a delay using setTimeout
-            setTimeout(() => {
-                taskList.classList.add(
-                    "animate__animated",
-                    "animate__zoomOutRight"
-                );
+    Swal.fire({
+        title: "Are you sure want to remove all tasks?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            taskLists.forEach((taskList, index) => {
+                // Add animation class with a delay using setTimeout
+                setTimeout(() => {
+                    taskList.classList.add(
+                        "animate__animated",
+                        "animate__zoomOutRight"
+                    );
 
-                // Listen for the animation end before removing the element
-                taskList.addEventListener("animationend", () => {
-                    taskList.remove();
-                    updateTaskTotalCount();
-                    updateCheckedTaskCount();
-                });
-            }, index * 300); // Delay increases by 300ms for each task
-        });
-    }
+                    // Listen for the animation end before removing the element
+                    taskList.addEventListener("animationend", () => {
+                        taskList.remove();
+                        updateTaskTotalCount();
+                        updateCheckedTaskCount();
+                    });
+                }, index * 300); // Delay increases by 300ms for each task
+            });
+        }
+    });
 };
 
 // Select all tasks
@@ -41,7 +52,7 @@ export const selAllTasksHandler = () => {
     const taskLists = document.querySelectorAll(".task-list");
     const allChecked = Array.from(taskLists).every((taskList) => {
         return taskList.querySelector(".task-done-check").checked;
-    })
+    });
 
     taskLists.forEach((taskList) => {
         const taskCheck = taskList.querySelector(".task-done-check");

@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { checkedTaskCount } from "./selectors";
 
 let countID = 1;
@@ -56,14 +57,24 @@ export const updateCheckedTaskCount = () => {
 // Delete task
 export const handleDeleteButton = (taskList) => {
     console.log("delete");
-    if (confirm("Are you sure want to delete?")) {
-        taskList.classList.add("animate__animated", "animate__hinge");
-        taskList.addEventListener("animationend", () => {
-            taskList.remove();
-            updateTaskTotalCount();
-            updateCheckedTaskCount();
-        });
-    }
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            taskList.classList.add("animate__animated", "animate__hinge");
+            taskList.addEventListener("animationend", () => {
+                taskList.remove();
+                updateTaskTotalCount();
+                updateCheckedTaskCount();
+            });
+        }
+    });
 };
 
 // Handle Checkbox Click
